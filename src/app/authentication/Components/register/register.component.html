@@ -1,0 +1,45 @@
+
+<h2>Add User</h2>
+<hr class="w-75">
+<form [formGroup]="form" (ngSubmit)="RegisterUser()">
+    <div class="form-group mb-3 row">
+      <label class="col-2" for="exampleInputEmail1">UserName</label>
+      <div class="col-6">
+          <input type="text" class="form-control" [class.invalid]="(UserName?.invalid && UserName?.touched)" id="exampleInputEmail1" placeholder="UserName" formControlName="UserName">
+          <span class="text-danger"  *ngIf="(UserName?.invalid && UserName?.touched) ">UserName is Required</span>
+      </div>
+    </div>
+    <div class="form-group mb-3 row">
+      <label class="col-2" for="exampleInputEmail2">Email</label>
+      <div class="col-6">
+          <input type="text" class="form-control" [class.invalid]="(Email?.invalid && Email?.touched)" id="exampleInputEmail2" placeholder="Email" formControlName="Email">
+          <span class="text-danger"  *ngIf="(Email?.invalid && Email?.touched) ">Email is Required</span>
+      </div>
+    </div>
+
+    <div class="form-group mb-3 row">
+        <label class="col-2" for="exampleInputEmail3">Password</label>
+        <div class="col-6">
+            <input type="password" class="form-control" [class.invalid]="(Password?.invalid && Password?.touched)" id="exampleInputEmail3" placeholder="Password" formControlName="Password">
+            <span class="text-danger"  *ngIf="(Password?.invalid && Password?.touched) ">Password is Required</span>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="col-2">Role</label>
+        <div class="col-6">
+            <select class="form-select" formControlName="roleId"
+            [class.invalid]="(roleId?.errors?.['required'])">
+                <option value="0" selected>Choose role</option>
+                <option *ngFor="let role of Roles" [value]="role.id">{{role.name}}</option>
+            </select>
+            <span class="text-danger" *ngIf="(roleId?.errors?.['required'])">role is Required</span>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-primary px-4">Submit</button>
+        </div>
+    </div>
+  </form>

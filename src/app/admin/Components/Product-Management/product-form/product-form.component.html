@@ -1,0 +1,31 @@
+
+<h2>Add Product</h2>
+<hr class="w-75">
+<form [formGroup]="form" (ngSubmit)="AddProduct()">
+    <div class="form-group mb-3 row">
+      <label class="col-2" for="exampleInputEmail1">Product Name</label>
+      <div class="col-6">
+          <input type="text" class="form-control" [class.invalid]="(productName?.invalid && productName?.touched)" id="exampleInputEmail1" placeholder="Product Name" formControlName="productName">
+          <span class="text-danger"  *ngIf="(productName?.invalid && productName?.touched) ">Product Name is Required</span>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label class="col-2">Category</label>
+        <div class="col-6">
+            <select class="form-select" formControlName="categoryId"
+            [class.invalid]="(categoryId?.errors?.['required'])">
+                <option value="0" selected>Choose Category</option>
+                <option *ngFor="let category of Categories" [value]="category.id">{{category.name}}</option>
+            </select>
+            <span class="text-danger" *ngIf="(categoryId?.errors?.['required'])">Category is Required</span>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-primary px-4">Submit</button>
+        </div>
+    </div>
+  </form>
