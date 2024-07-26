@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://onlineshopappapi.runasp.net/api/', // Your local API URL
-    jwtIssuer: 'http://onlineshopappapi.runasp.net', // Your Issuer URL
-    jwtAudience: 'http://onlineshopappapi.runasp.net' // Your Audience URL
+    apiUrl: 'https://onlineshopappapi.runasp.net/api/', // Your local API URL
+    jwtIssuer: 'https://onlineshopappapi.runasp.net', // Your Issuer URL
+    jwtAudience: 'https://onlineshopappapi.runasp.net' // Your Audience URL
   };
